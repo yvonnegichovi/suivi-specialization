@@ -6,82 +6,188 @@
     <title>Parcel Delivery History</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/view_parcel_history.css') }}">
-  <link rel="icon" href="../static/images/favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" sizes="180x180" href="../static/images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../static/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon-16x16.png">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-P8XN+Jyrp6rVIiIMT9RYBq5h6DScnIxK1K8yhSfFNSq7hdx38P4qNGpbKNisF3d6V2fK60h0RVaMx6syPeCifQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="../static/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon-16x16.png">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-P8XN+Jyrp6rVIiIMT9RYBq5h6DScnIxK1K8yhSfFNSq7hdx38P4qNGpbKNisF3d6V2fK60h0RVaMx6syPeCifQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/view_parcel_history.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/headfoot.css') }}">
+    <style>
+        .assignment-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .assignment-container h1 {
+            font-size: 2em;
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+
+        .section-header {
+            cursor: pointer;
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            font-size: 1.2em;
+        }
+
+        .section-header:hover {
+            background-color: #0056b3;
+        }
+
+        .tracking-item {
+            display: none;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .tracking-item.expanded {
+            display: block;
+        }
+
+        .tracking-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 20px;
+            background-color: #ffc107; /* Yellow for Open Parcels */
+        }
+
+        .tracking-icon.closed {
+            background-color: #17a2b8; /* Teal for Closed Parcels */
+        }
+
+        .tracking-date {
+            font-weight: bold;
+            color: #6c757d;
+        }
+
+        .tracking-content {
+            font-size: 0.9em;
+            color: #495057;
+        }
+
+        .no-assignments {
+            text-align: center;
+            font-size: 1.2em;
+            color: #6c757d;
+            padding: 20px 0;
+        }
+    </style>
 </head>
 <body>
-	{% include 'header.html' %}
-{% if current_user.is_authenticated %}
+    {% include 'header.html' %}
+    {% if current_user.is_authenticated %}
+    <div class="assignment-container">
+        <h1>Parcel Delivering History</h1>
 
-<div class="container">
-    <h1>Parcel Delivering History</h1>
+        <div class="section-header" id="open-orders-header">
+            <i class="fas fa-chevron-down"></i> Open Parcels
+        </div>
+        <div id="open-orders-section">
+            {% if open_orders %}
+                {% for parcel in open_orders %}
+                    <div class="tracking-item">
+                        <div class="tracking-icon">
+                            <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                            </svg>
+                        </div>
+                        <div class="tracking-date">{{ parcel.date }}<span>{{ parcel.time }}</span></div>
+                        <div class="tracking-content">
+                            <p><strong>Parcel ID:</strong> {{ parcel.id }}</p>
+                            <p><strong>Tracking Number:</strong> {{ parcel.tracking_number }}</p>
+                            <p><strong>Parcel Status:</strong> {{ parcel.status }}</p>
+                            <p><strong>Receiver Name:</strong> {{ parcel.receiver_name }}</p>
+                            <p><strong>Receiver Contact:</strong> {{ parcel.receiver_contact }}</p>
+                            <p><strong>Pickup Location:</strong> {{ parcel.pickup_location }}</p>
+                            <p><strong>Delivery Location:</strong> {{ parcel.delivery_location }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="no-assignments">No open parcels found.</p>
+            {% endif %}
+        </div>
 
-    <h3>Open Parcels</h3>
-    {% if open_orders %}
-        {% for parcel in open_orders %}
-            <div class="tracking-item">
-                <div class="tracking-icon status-allocated">
-                    <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
-                        <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
-                    </svg>
-                </div>
-                <div class="tracking-date">{{ parcel.date }}<span>{{ parcel.time }}</span></div>
-                <div class="tracking-content">
-                    <p><strong>Parcel ID:</strong> {{ parcel.id }}</p>
-                    <p><strong>Tracking Number:</strong> {{ parcel.tracking_number }}</p>
-                    <p><strong>Parcel Status:</strong> {{ parcel.status }}</p>
-                    <p><strong>Receiver Name:</strong> {{ parcel.receiver_name }}</p>
-                    <p><strong>Receiver Contact:</strong> {{ parcel.receiver_contact }}</p>
-                    <p><strong>Pickup Location:</strong> {{ parcel.pickup_location }}</p>
-                    <p><strong>Delivery Location:</strong> {{ parcel.delivery_location }}</p>
-                </div>
-            </div>
-        {% endfor %}
+        <div class="section-header" id="closed-orders-header">
+            <i class="fas fa-chevron-down"></i> Closed Parcels
+        </div>
+        <div id="closed-orders-section">
+            {% if closed_orders %}
+                {% for parcel in closed_orders %}
+                    <div class="tracking-item">
+                        <div class="tracking-icon closed">
+                            <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                            </svg>
+                        </div>
+                        <div class="tracking-date">{{ parcel.date }}<span>{{ parcel.time }}</span></div>
+                        <div class="tracking-content">
+                            <p><strong>Parcel ID:</strong> {{ parcel.id }}</p>
+                            <p><strong>Tracking Number:</strong> {{ parcel.tracking_number }}</p>
+                            <p><strong>Parcel Status:</strong> {{ parcel.status }}</p>
+                            <p><strong>Receiver Name:</strong> {{ parcel.receiver_name }}</p>
+                            <p><strong>Receiver Contact:</strong> {{ parcel.receiver_contact }}</p>
+                            <p><strong>Pickup Location:</strong> {{ parcel.pickup_location }}</p>
+                            <p><strong>Delivery Location:</strong> {{ parcel.delivery_location }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="no-assignments">No closed parcels found.</p>
+            {% endif %}
+        </div>
+    </div>
     {% else %}
-        <p>No allocated parcels found.</p>
+    <div class="assignment-container">
+        <h1>Parcel History</h1>
+        <p>Please log in to view your parcel history.</p>
+    </div>
     {% endif %}
-</div>
+    {% include 'footer.html' %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const openOrdersHeader = document.getElementById('open-orders-header');
+            const closedOrdersHeader = document.getElementById('closed-orders-header');
 
-    <h3>Closed Parcels</h3>
-    {% if closed_orders %}
-        {% for parcel in closed_orders %}
-            <div class="tracking-item">
-                <div class="tracking-icon status-inprogress">
-                    <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
-                        <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
-                    </svg>
-                </div>
-                <div class="tracking-date">{{ parcel.date }}<span>{{ parcel.time }}</span></div>
-                <div class="tracking-content">
-                    <p><strong>Parcel ID:</strong> {{ parcel.id }}</p>
-                    <p><strong>Tracking Number:</strong> {{parcel.tracking_number }}</p>
-                    <p><strong>Receiver Name:</strong> {{ parcel.receiver_name }}</p>
-                    <p><strong>Receiver Contact:</strong> {{ parcel.receiver_contact }}</p>
-                    <p><strong>Pickup Location:</strong> {{ parcel.pickup_location }}</p>
-                    <p><strong>Delivery Location:</strong> {{ parcel.delivery_location }}</p>
-		</div>
-            </div>
-        {% endfor %}
-    {% else %}
-        <p>No parcels in progress.</p>
-    {% endif %}
+            const openOrdersSection = document.getElementById('open-orders-section');
+            const closedOrdersSection = document.getElementById('closed-orders-section');
 
-</div>
-{% else %}
-<div class="container">
-    <h1>Parcel History</h1>
-    <p>Please log in to view your parcel history.</p>
-</div>
-{% endif %}
-{% include 'footer.html' %}
+            openOrdersHeader.addEventListener('click', function() {
+                toggleSection(openOrdersSection);
+            });
+
+            closedOrdersHeader.addEventListener('click', function() {
+                toggleSection(closedOrdersSection);
+            });
+
+            function toggleSection(section) {
+                const items = section.querySelectorAll('.tracking-item');
+                items.forEach(item => {
+                    item.classList.toggle('expanded');
+                });
+            }
+        });
+    </script>
 </body>
 </html>

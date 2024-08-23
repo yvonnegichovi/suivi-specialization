@@ -258,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             body: JSON.stringify({
                 rider_id: "{{ current_user.id }}", // Replace with actual rider ID
-                current_location: `${lat},${lng}`
+                new_location: `${lat},${lng}`
             })
         })
         .then(response => response.json())

@@ -312,4 +312,118 @@ nav ul li a:hover {
         padding: 14px 30px; /* Increase padding for larger screens */
     }
 }
+.assignment-container {
+	color: white;
+}
+
+
+.assignment-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.assignment-container h1 {
+    font-size: 2em;
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+.assignment-container h5 {
+    font-size: 1.5em;
+    color: #495057;
+    margin-top: 30px;
+}
+
+.tracking-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.tracking-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tracking-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.status-allocated {
+    background-color: #ffc107; /* Yellow */
+}
+
+.status-inprogress {
+    background-color: #17a2b8; /* Teal */
+}
+
+.status-shipped {
+    background-color: #007bff; /* Blue */
+}
+
+.status-arrived {
+    background-color: #28a745; /* Green */
+}
+
+.tracking-date {
+    flex-grow: 1;
+    font-weight: bold;
+    color: #6c757d;
+}
+
+.tracking-content {
+    font-size: 0.9em;
+    color: #495057;
+}
+
+.tracking-content p {
+    margin: 2px 0;
+}
+
+.no-assignments {
+    text-align: center;
+    font-size: 1.2em;
+    color: #6c757d;
+    padding: 20px 0;
+}
+
+/* Add CSS to handle the expanded state */
+.tracking-item.expanded {
+    max-height: none; /* Allow the item to expand */
+    border: 2px solid #007bff;
+    background-color: #e9f7ff;
+}
+
+.tracking-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.tracking-item.expanded .tracking-content {
+    max-height: 200px; /* Adjust as needed */
+}
+.tracking-item:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.filter-btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px #007bff;
+}
 
