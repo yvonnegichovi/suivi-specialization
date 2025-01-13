@@ -121,7 +121,7 @@ suivi-specialization/
 ├── requirements.txt
 ├── run.py
 └── tailwind.config.js
-
+```
 
 ### Installation - Flask
 
