@@ -3,7 +3,7 @@ from flask_login import login_user, login_required, logout_user, current_user
 import json
 from entry.forms import LoginRiderForm, RegistrationForm, LoginForm, UpdateAccountForm, RiderRegistrationForm, ParcelForm, UpdateRiderForm, ForgotPasswordForm, ResetPasswordForm
 from entry import mail
-from entry.models import User, Rider, Parcel, FAQ
+from entry.models import User, Sender, Rider, Parcel, FAQ
 from sqlalchemy.exc import IntegrityError
 from entry import app, db, bcrypt
 from flask_mail import Message, Mail
@@ -19,23 +19,21 @@ def forgot_password():
     form = ForgotPasswordForm()
     if form.validate_on_submit():
         email = form.email.data
-        user = User.query.filter_by(email=email).first()
+        sender = Sender.query.filter_by(email=email).first()
         rider = Rider.query.filter_by(email=email).first()
-        if user:
-            # Generate a unique token for the user
+        if sender:
             token = secrets.token_urlsafe(32)
-            user.reset_password_token = token
+            sender.reset_password_token = token
             db.session.commit()
 
             # Send password reset email
             reset_url = url_for('password.reset_password', token=token, _external=True)
             message = f"Click the link to reset your password: {reset_url}"
-            send_email(user.email, "Password Reset Request", message)
+            send_email(sender.email, "Password Reset Request", message)
 
             flash("Instructions to reset your password have been sent to your email.", "success")
             return redirect(url_for('auth.login'))
         elif rider:
-            # Generate a unique token for the rider
             token = secrets.token_urlsafe(32)
             rider.reset_password_token = token
             db.session.commit()
@@ -68,27 +66,10 @@ def reset_password(token):
             db.session.commit()
 
             flash("Your password has been successfully reset. You can now log in with your new password.", 'success')
-            return redirect(url_for('auth.login'))
+            return redirect(url_for('main.logout'))
         return render_template('reset_password.html', form=form)
 
-    # If the token doesn't exist for a user, check if it exists for a rider
-    rider = Rider.query.filter_by(reset_password_token=token).first()
-    if rider:
-        form = ResetPasswordForm()
-        if form.validate_on_submit():
-            # Update the rider's password
-            new_password = form.password.data
-            rider.password = bcrypt.generate_password_hash(new_password).decode('utf-8')
-
-            # Clear the reset_password_token
-            rider.reset_password_token = None
-            db.session.commit()
-
-            flash("Your password has been successfully reset. You can now log in with your new password.", 'success')
-            return redirect(url_for('rider.login_rider'))
-        return render_template('reset_password.html', form=form)
-
-    # If the token is invalid or expired for both user and rider
+    # If the token is invalid or expired for user
     flash("Invalid or expired token.", 'danger')
     return redirect(url_for('password.forgot_password'))
 

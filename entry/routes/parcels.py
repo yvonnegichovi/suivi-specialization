@@ -34,7 +34,7 @@ stripe_keys = {
         "publishable_key": publishable_key,
         }
 
-stripe.api_key = stripe_keys['secret_key']
+stripe.api_key = secret_key
 
 @parcel.route('/track_parcel')
 def track_parcel():
@@ -100,15 +100,13 @@ def request_pickup():
                 return redirect(url_for('parcel.request_pickup', step='2'))
 
         elif step == '4':
-            # Save receiver's information
             session['receiver_name'] = form.receiver_name.data
             session['receiver_contact'] = form.receiver_contact.data
 
-            # Create the parcel entry in the database
             parcel = Parcel(
-                sender_name=current_user.username,
-                sender_email=current_user.email,
-                sender_contact=current_user.user_contact,
+                sender_id=current_user.id,
+                # sender_email=current_user.email,
+                # sender_contact=current_user.user_contact,
                 receiver_name=session['receiver_name'],
                 receiver_contact=session['receiver_contact'],
                 pickup_location=session['pickup_location'],
@@ -137,7 +135,6 @@ def get_coordinates():
     pickup_lat, pickup_lng = get_lat_lng(pickup_location)
     delivery_lat, delivery_lng = get_lat_lng(delivery_location)
 
-    # Check if both locations were successfully fetched
     if None in (pickup_lat, pickup_lng, delivery_lat, delivery_lng):
         return jsonify({"error": "Could not fetch coordinates for one or both locations"}), 400
     return jsonify({
@@ -340,7 +337,7 @@ def update_assignment():
 @login_required
 def view_parcel_history():
     if current_user.is_authenticated:
-        parcels = Parcel.query.filter_by(sender_email=current_user.email).all()
+        parcels = Parcel.query.filter_by(sender_id=current_user.id).all()
 
         # Separate parcels by status
         allocated_parcels = [parcel for parcel in parcels if parcel.status == 'allocated']

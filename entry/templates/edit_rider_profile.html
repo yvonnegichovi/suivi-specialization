@@ -11,7 +11,7 @@
 </head>
 
 <body>
-	{% include 'header.html' %}
+    {% include 'header.html' %}
     <div class="container">
         <h1>Rider's Profile Section</h1>
         <div class="content-section">
@@ -20,9 +20,9 @@
                 <fieldset class="form-group">
                     <legend class="border-bottom mb-4">Edit Profile</legend>
                     <div class="form-group">
-                        {{ form.name.label(class="form-control-label") }}
-                        {{ form.name(class="form-control form-control-lg") }}
-                        {% for error in form.name.errors %}
+                        {{ form.username.label(class="form-control-label") }}
+                        {{ form.username(class="form-control form-control-lg") }}
+                        {% for error in form.username.errors %}
                         <span class="text-danger">{{ error }}</span>
                         {% endfor %}
                     </div>
@@ -34,23 +34,9 @@
                         {% endfor %}
                     </div>
                     <div class="form-group">
-                        {{ form.password.label(class="form-control-label") }}
-                        {{ form.password(class="form-control form-control-lg") }}
-                        {% for error in form.password.errors %}
-                        <span class="text-danger">{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                    <div class="form-group">
-                        {{ form.confirm_password.label(class="form-control-label") }}
-                        {{ form.confirm_password(class="form-control form-control-lg") }}
-                        {% for error in form.confirm_password.errors %}
-                        <span class="text-danger">{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                    <div class="form-group">
-                        {{ form.contact_number.label(class="form-control-label") }}
-                        {{ form.contact_number(class="form-control form-control-lg") }}
-                        {% for error in form.contact_number.errors %}
+                        {{ form.contact.label(class="form-control-label") }}
+                        {{ form.contact(class="form-control form-control-lg") }}
+                        {% for error in form.contact.errors %}
                         <span class="text-danger">{{ error }}</span>
                         {% endfor %}
                     </div>
@@ -75,7 +61,40 @@
                         <span class="text-danger">{{ error }}</span>
                         {% endfor %}
                     </div>
+                    <div class="form-group">
+                        {{ form.current_location.label(class="form-control-label") }}
+                        {{ form.current_location(class="form-control form-control-lg") }}
+                        {% for error in form.current_location.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                        {% endfor %}
+                    </div>
                 </fieldset>
+
+                <div class="form-check mb-3">
+                    <input type="checkbox" class="form-check-input" id="change_password">
+                    <label class="form-check-label" for="change_password">Change Password</label>
+                </div>
+
+                <div id="password_fields" style="display: none;">
+                    <fieldset class="form-group">
+                        <!-- <legend class="border-bottom mb-4">Change Password</legend> -->
+                        <div class="form-group">
+                            {{ form.new_password.label(class="form-control-label") }}
+                            {{ form.new_password(class="form-control form-control-lg") }}
+                            {% for error in form.new_password.errors %}
+                            <span class="text-danger">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.confirm_new_password.label(class="form-control-label") }}
+                            {{ form.confirm_new_password(class="form-control form-control-lg") }}
+                            {% for error in form.confirm_new_password.errors %}
+                            <span class="text-danger">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    </fieldset>
+                </div>
+
                 <div class="form-group">
                     {{ form.submit(class="btn btn-outline-info") }}
                 </div>
@@ -86,6 +105,13 @@
     {% include 'footer.html' %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#change_password').change(function() {
+                $('#password_fields').slideToggle();
+            });
+        });
+    </script>
 </body>
 
 </html>

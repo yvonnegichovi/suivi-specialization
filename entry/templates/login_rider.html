@@ -32,9 +32,9 @@
                         <fieldset class="form-group">
                             <legend class="border-bottom mb-4">Login as a Rider</legend>
                             <div class="form-group">
-                                {{ form.contact_number.label(class="form-control-label") }}
-                                {{ form.contact_number(class="form-control form-control-lg") }}
-                                {% for error in form.contact_number.errors %}
+                                {{ form.username.label(class="form-control-label") }}
+                                {{ form.username(class="form-control form-control-lg") }}
+                                {% for error in form.username.errors %}
                                 <span class="text-danger">{{ error }}</span>
                                 {% endfor %}
                             </div>

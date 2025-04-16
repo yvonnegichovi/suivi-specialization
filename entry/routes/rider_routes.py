@@ -29,8 +29,8 @@ def register_rider():
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         new_rider = Rider(
-            name=form.name.data,
-            contact_number=form.contact_number.data,
+            username=form.username.data,
+            contact=form.contact.data,
             email=form.email.data,
             vehicle_type=form.vehicle_type.data,
             vehicle_registration=form.vehicle_registration.data,
@@ -60,7 +60,7 @@ def login_rider():
         return redirect(url_for('rider.rider_authenticated'))
     form = LoginRiderForm()
     if form.validate_on_submit():
-        rider = Rider.query.filter_by(contact_number=form.contact_number.data).first()
+        rider = Rider.query.filter_by(username=form.username.data).first()
         if rider and bcrypt.check_password_hash(rider.password, form.password.data):
             login_user(rider)
             pending_assignments = Parcel.query.filter_by(rider_id=rider.id).filter(Parcel.status.in_(['allocated', 'shipped', 'in_progress'])).first()
@@ -74,19 +74,19 @@ def login_rider():
 @rider.route('/rider_authenticated')
 @rider_login_required
 def rider_authenticated():
-    rider = Rider.query.filter_by(contact_number=current_user.contact_number).first()
+    rider = Rider.query.filter_by(username=current_user.username).first()
     pending_assignments = Parcel.query.filter_by(rider_id=current_user.id).filter(Parcel.status.in_(['allocated', 'shipped', 'in_progress'])).first()
     return render_template('rider_authenticated.html', title='Rider\'s dashboard', user=current_user, assignment=pending_assignments)
 
 
 @rider.route('/edit_rider_profile', methods=['GET', 'POST'])
-@rider_login_required
+# @rider_login_required
 def edit_rider_profile():
     form = UpdateRiderForm()
     if request.method == 'GET':
         form.email.data = current_user.email
-        form.name.data = current_user.name
-        form.contact_number.data = current_user.contact_number
+        form.username.data = current_user.username
+        form.contact.data = current_user.contact
         form.vehicle_type.data = current_user.vehicle_type
         form.vehicle_registration.data = current_user.vehicle_registration
         form.area_of_operation.data = current_user.area_of_operation
@@ -94,15 +94,21 @@ def edit_rider_profile():
     elif request.method == 'POST':
         if form.validate_on_submit():
             current_user.email = form.email.data
-            current_user.name = form.name.data
-            hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-            current_user.password = hashed_password
+            current_user.username = form.username.data
+            current_user.contact = form.contact.data
             current_user.vehicle_type = form.vehicle_type.data
             current_user.vehicle_registration = form.vehicle_registration.data
             current_user.area_of_operation = form.area_of_operation.data
             current_user.current_location = form.current_location.data
+
+            if form.new_password.data:
+                hashed_password = bcrypt.generate_password_hash(form.new_password.data).decode('utf-8')
+                current_user.password = hashed_password
+                flash('Your account details and password have been updated successfully!', 'success')
+            else:
+                flash('Your account details have been updated successfully!', 'success')
+
             db.session.commit()
-            flash('Your account has been updated successfully!', 'success')
             return redirect(url_for('rider.rider_authenticated'))
     return render_template('edit_rider_profile.html', title='Edit Profile', form=form, user=current_user)
 
@@ -133,16 +139,20 @@ def rider_dashboard():
     return render_template('rider_dashboard.html', rider=current_user)
 
 
-@rider.route('/toggle_rider_status/<rider_id>', methods=['POST'])
+@rider.route('/toggle_rider_status', methods=['POST'])
 @rider_login_required
-def toggle_rider_status(rider_id):
+def toggle_rider_status():
     """
     Toggles the status of the rider between available and unavailable
     """
+    rider_id = current_user.id
     logging.info(f"Received rider_id: {rider_id}")
     rider = Rider.query.filter_by(id=rider_id).first()
     if rider:
-        rider.status = 'unavailable' if rider.status == 'available' else 'available'
+        if rider.status == 'unavailable':
+            rider.status = 'available'
+        else:
+            rider.status = 'unavailable'
         db.session.commit()
         return jsonify({'status': rider.status})
     return jsonify({'error': 'Rider not found'}), 404
