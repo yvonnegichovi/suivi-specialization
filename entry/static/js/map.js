@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
 
-        // Fetch and display assignment details if available
         if (pickupLocation && deliveryLocation) {
             fetch('/get_coordinates', {
                 method: 'POST',
@@ -49,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     .openPopup();
                 L.circle(deliveryLatLng, { radius: 100 }).addTo(map);
 
-                // Add route between pickup and delivery locations
                 L.Routing.control({
                     waypoints: [
                         L.latLng(pickupLatLng),
@@ -64,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => console.error('Error fetching coordinates:', error));
         }
 
-        // Live location tracking of rider
         if (navigator.geolocation) {
             navigator.geolocation.watchPosition(success, error);
         } else {
@@ -93,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function() {
             riderCircle.addTo(map);
             map.setView([lat, lng], 13);
 
-            // Reverse geocode to get location name
             fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&addressdetails=1`)
                 .then(response => response.json())
                 .then(data => {
@@ -103,7 +99,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 })
                 .catch(error => console.error('Error in reverse geocoding:', error));
 
-            // If pickup location data is available, add route between rider and pickup
             if (pickupLat && pickupLng) {
                 riderToPickupRoute = L.Routing.control({
                     waypoints: [

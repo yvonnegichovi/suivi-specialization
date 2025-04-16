@@ -1,4 +1,4 @@
-/* --- Variables (Consistent with about.css) --- */
+
 :root {
     --primary-color: #1abc9c;
     --primary-darker: #16a085;
@@ -11,17 +11,17 @@
     --section-padding: 4rem 0;
 }
 
-/* --- General --- */
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--white-color); /* Ensure white background */
+    background-color: var(--white-color); 
     color: var(--dark-text);
 }
 
-/* --- Page Header --- */
+
 .section-title {
     font-weight: 700;
-    color: var(--dark-text); /* Dark title */
+    color: var(--dark-text); 
     position: relative;
     padding-bottom: 0.75rem;
     margin-bottom: 3rem !important;
@@ -34,11 +34,11 @@ body {
     transform: translateX(-50%);
     width: 70px;
     height: 4px;
-    background-color: var(--primary-color); /* Teal underline */
+    background-color: var(--primary-color); 
     border-radius: 2px;
 }
 
-/* --- Form Styling --- */
+
 #support-form .form-label {
     font-weight: 600;
     color: var(--dark-text);
@@ -46,19 +46,19 @@ body {
 }
 
 #support-form .form-control {
-    border-radius: 0.375rem; /* Standard Bootstrap rounding */
+    border-radius: 0.375rem; 
     border: 1px solid #ced4da;
 }
 #support-form .form-control:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 0.25rem rgba(26, 188, 156, 0.25); /* Teal focus ring */
+    box-shadow: 0 0 0 0.25rem rgba(26, 188, 156, 0.25); 
 }
 
 #support-form .btn-primary {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
     font-weight: 600;
-    padding: 0.75rem 1.25rem; /* Adjust button padding */
+    padding: 0.75rem 1.25rem; 
     transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
@@ -67,20 +67,20 @@ body {
     border-color: var(--primary-darker);
 }
 
-/* --- FAQ Styling --- */
+
 .faq-container {
-    /* Optional: Add border or background if desired */
-    /* padding: 1.5rem; */
-    /* background-color: var(--light-gray); */
-    /* border: 1px solid #dee2e6; */
-    /* border-radius: 0.5rem; */
+    
+    
+    
+    
+    
 }
 
 .accordion-item {
     border: 1px solid #dee2e6;
-    margin-bottom: 0.5rem; /* Space between items */
+    margin-bottom: 0.5rem; 
     border-radius: 0.375rem;
-    overflow: hidden; /* Ensure rounded corners apply */
+    overflow: hidden; 
 }
 .accordion-item:first-of-type {
     border-top-left-radius: 0.375rem;
@@ -93,7 +93,7 @@ body {
 }
 
 .accordion-header {
-    /* Remove default margin */
+    
     margin-bottom: 0;
 }
 
@@ -101,25 +101,25 @@ body {
     font-weight: 600;
     color: var(--dark-text);
     background-color: var(--white-color);
-    box-shadow: none !important; /* Remove focus shadow */
+    box-shadow: none !important; 
     padding: 1rem 1.25rem;
 }
 
-/* Style the button when it's NOT collapsed (i.e., section is open) */
+
 .accordion-button:not(.collapsed) {
     color: var(--white-color);
     background-color: var(--primary-color);
-    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125); /* Default Bootstrap shadow */
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125); 
 }
 
-/* Style the arrow icon */
+
 .accordion-button::after {
-    /* Use Bootstrap's default SVG arrow */
+    
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
     transition: transform .2s ease-in-out;
 }
 .accordion-button:not(.collapsed)::after {
-     /* Change arrow color when open */
+     
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
     transform: rotate(-180deg);
 }
@@ -127,11 +127,11 @@ body {
 .accordion-body {
     padding: 1rem 1.25rem;
     color: var(--muted-text);
-    background-color: var(--white-color); /* Ensure body background is white */
+    background-color: var(--white-color); 
 }
 
-/* --- Card Styling (for form container) --- */
+
 .card {
-    border: 1px solid #dee2e6; /* Add a subtle border */
+    border: 1px solid #dee2e6; 
 }
 

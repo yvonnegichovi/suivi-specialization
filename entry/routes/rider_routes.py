@@ -80,7 +80,7 @@ def rider_authenticated():
 
 
 @rider.route('/edit_rider_profile', methods=['GET', 'POST'])
-# @rider_login_required
+@rider_login_required
 def edit_rider_profile():
     form = UpdateRiderForm()
     if request.method == 'GET':
@@ -117,10 +117,8 @@ def edit_rider_profile():
 @rider_login_required
 def view_rider_history():
     if current_user.is_authenticated:
-        # Query parcels for the current rider
         parcels = Parcel.query.filter_by(rider_id=current_user.id).all()
 
-        # Separate parcels by status
         open_orders = [parcel for parcel in parcels if parcel.status in ['in_progress', 'shipped']]
         closed_orders = [parcel for parcel in parcels if parcel.status == 'arrived']
 

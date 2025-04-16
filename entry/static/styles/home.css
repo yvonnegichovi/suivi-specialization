@@ -36,7 +36,7 @@ font-family: 'Source Serif Pro', serif;
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
 
-/* Button used to open the chat form - fixed at the bottom of the page */
+
 .open-button {
 	background-color: #555;
 	color: white;
@@ -50,7 +50,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 	width: 280px;
 }
 
-/* The popup chat - hidden by default */
+
 .chat-popup {
 	display: none;
 	position: fixed;
@@ -60,14 +60,14 @@ body {font-family: Arial, Helvetica, sans-serif;}
 	z-index: 9;
 }
 
-/* Add styles to the form container */
+
 .form-container {
 	max-width: 300px;
 	padding: 10px;
 	background-color: white;
 }
 
-/* Full-width textarea */
+
 .form-container textarea {
 	width: 100%;
 	padding: 15px;
@@ -78,13 +78,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
 	min-height: 200px;
 }
 
-/* When the textarea gets focus, do something */
+
 .form-container textarea:focus {
 	background-color: #ddd;
 	outline: none;
 }
 
-/* Set a style for the submit/send button */
+
 .form-container .btn {
 	background-color: #04AA6D;
 	color: white;
@@ -96,12 +96,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
 	opacity: 0.8;
 }
 
-/* Add a red background color to the cancel button */
+
 .form-container .cancel {
 	background-color: red;
 }
 
-/* Add some hover effects to buttons */
+
 .form-container .btn:hover, .open-button:hover {
 	opacity: 1;
 }
@@ -209,16 +209,16 @@ body {
   transition: transform 0.3s ease-out;
 }
 .logo {
-	width: 40px; /* Adjust the width as needed */
+	width: 40px; 
 	height: auto;
 	vertical-align: middle;
 }
 
 .title {
-	font-size: 24px; /* Adjust the font size as needed */
+	font-size: 24px; 
 	font-weight: bold;
-	color: #333; /* Adjust the color as needed */
-	margin-left: 10px; /* Adjust the spacing between the logo and title as needed */
+	color: #333; 
+	margin-left: 10px; 
 }
 .small-header {
     height: 60vh;
@@ -232,7 +232,7 @@ body {
     text-align: center;
 }
 
-/* Reverse D-shape for left-aligned images */
+
 .lg\:flex-row-reverse .d-shape {
     border-top-right-radius: 0;
     border-top-left-radius: 50% 50%;
@@ -241,24 +241,24 @@ body {
 }
 
 .display-4 .lead {
-  /* Other styles */
+  
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .cards-container {
-  display: flex; /* Use flexbox to display cards horizontally */
-  flex-wrap: wrap; /* Allow cards to wrap to the next line if needed */
-  justify-content: space-between; /* Distribute space between cards evenly */
-  background-color: #f3f4f6; /* Light grey background color */
-  padding: 20px; /* Adjust padding as needed */
-  border-radius: 8px; /* Optional: Add border radius for rounded corners */
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: space-between; 
+  background-color: #f3f4f6; 
+  padding: 20px; 
+  border-radius: 8px; 
 }
 
 .card {
-  flex: 0 0 calc(20% - 10px); /* Adjust card width as needed */
-  margin-bottom: 20px; /* Optional: Add margin between cards */
+  flex: 0 0 calc(20% - 10px); 
+  margin-bottom: 20px; 
 }
 
 
@@ -269,8 +269,8 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-  z-index: 9999; /* Ensure the section appears on top of other content */
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 9999; 
 }
 
 .policy-content {
@@ -282,29 +282,29 @@ body {
 }
 
 .policy-content-item {
-  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+  background-color: rgba(255, 255, 255, 0.9); 
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Optional: Add shadow effect */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
   color: #000;
 }
 
 .close-policy-btn {
   position: absolute;
-  right: 10px; /* Adjust right position to be closer to the right */
+  right: 10px; 
   background-color: #000;
   padding: 10px 20px;
   top: 5px;
-  color: #fff; /* Set button text color to white */
+  color: #fff; 
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  /* Set z-index to ensure the button appears above the policy content */
+  
   z-index: 1;
 }
 .smaller-text {
-  font-size: 14px; /* Adjust font size as needed */
-  color: blue; /* Set color for the smaller text */
+  font-size: 14px; 
+  color: blue; 
 }
 footer {
     background-color: #343a40;
@@ -435,7 +435,7 @@ footer i {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 40px; /* Spacing between sections */
+    margin-bottom: 40px; 
 }
 
 .flex-lg-row {
@@ -472,7 +472,7 @@ footer i {
     align-items: center;
 }
 
-/* For reversed sections, flip the D-shape */
+
 .flex-lg-row-reverse .image-container {
     border-top-left-radius: 50% 50%;
     border-bottom-left-radius: 50% 50%;
@@ -502,7 +502,7 @@ footer i {
     background-color: #0056b3;
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 768px) {
     .d-flex {
         flex-direction: column;

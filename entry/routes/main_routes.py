@@ -38,7 +38,6 @@ def logout():
 @main.route('/support', methods=['GET', 'POST'])
 def support():
     if request.method == 'POST':
-        # --- POST logic remains the same ---
         name = request.form.get('name')
         email = request.form.get('email')
         comment = request.form.get('comment')
@@ -69,7 +68,6 @@ def support():
 
         return redirect(url_for('main.support'))
 
-    # --- GET Request Handling ---
     if request.method == 'GET':
         search_query = request.args.get('search_query', '').strip()
 
@@ -86,7 +84,6 @@ def support():
 
             if not existing_faqs:
                 try:
-                    # 1. Log to Database (with new fields)
                     user_id_to_log = current_user.id if current_user.is_authenticated else None
                     unanswered = UnansweredQuestion(
                         query_text=search_query,

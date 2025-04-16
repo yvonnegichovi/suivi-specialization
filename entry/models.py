@@ -46,12 +46,12 @@ class Rider(User):
 class Sender(User):
     __tablename__ = 'sender'
     id = db.Column(db.String(36), db.ForeignKey('users.id'), primary_key=True)
-    email = db.Column(db.String(100), unique=True, nullable=False)  # Unique within Sender
-    contact = db.Column(db.String(20), unique=True, nullable=False) # Unique within Sender
+    email = db.Column(db.String(100), unique=True, nullable=False)
+    contact = db.Column(db.String(20), unique=True, nullable=False)
     parcels = db.relationship('Parcel', backref='sender', lazy=True)
 
     __mapper_args__ = {
-        'polymorphic_identity': 'sender',  # Identity for Sender
+        'polymorphic_identity': 'sender',
     }
 
     def __repr__(self):
@@ -60,11 +60,11 @@ class Sender(User):
 class Admin(User):
     __tablename__ = 'admin'
     id = db.Column(db.String(36), db.ForeignKey('users.id'), primary_key=True)
-    email = db.Column(db.String(100), unique=True, nullable=False)  # Unique within Admin
-    contact = db.Column(db.String(20), unique=True, nullable=False) # Unique within Admin
+    email = db.Column(db.String(100), unique=True, nullable=False)
+    contact = db.Column(db.String(20), unique=True, nullable=False)
 
     __mapper_args__ = {
-        'polymorphic_identity': 'admin',  # Identity for Admin
+        'polymorphic_identity': 'admin',
     }
 
     def __repr__(self):
@@ -73,11 +73,17 @@ class Admin(User):
 class Parcel(db.Model):
     __tablename__ = 'parcel'
     id = db.Column(db.Integer, primary_key=True)
-    sender_id = db.Column(db.String(36), db.ForeignKey('sender.id'), nullable=False)  # Reference Sender
+    sender_id = db.Column(db.String(36), db.ForeignKey('sender.id'), nullable=False)
     receiver_name = db.Column(db.String(100))
     receiver_contact = db.Column(db.String(20))
     pickup_location = db.Column(db.String(255), nullable=False)
     delivery_location = db.Column(db.String(255), nullable=False)
+    pickup_lat = db.Column(db.Float, nullable=True)
+    pickup_lng = db.Column(db.Float, nullable=True)
+    delivery_lat = db.Column(db.Float, nullable=True)
+    delivery_lng = db.Column(db.Float, nullable=True)
+    payment_status = db.Column(db.String(50), default='pending', nullable=False)
+    stripe_charge_id = db.Column(db.String(100), nullable=True, unique=True)
     description = db.Column(db.String(400), nullable=True)
     rider_id = db.Column(db.String(36), db.ForeignKey('rider.id'), nullable=True)
     status = db.Column(db.String(20), default='pending')
@@ -111,8 +117,8 @@ class UnansweredQuestion(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     query_text = db.Column(db.String(500), nullable=False)
     timestamp = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    status = db.Column(db.String(50), default='new', nullable=False) # e.g., 'new', 'reviewed', 'answered', 'irrelevant'
-    user_id = db.Column(db.String(36), db.ForeignKey('users.id'), nullable=True)  # Changed to match User model
+    status = db.Column(db.String(50), default='new', nullable=False) #  enum later with 'new', 'reviewed', 'answered', 'irrelevant'
+    user_id = db.Column(db.String(36), db.ForeignKey('users.id'), nullable=True)
 
     def __repr__(self):
         user_info = f" (User ID: {self.user_id})" if self.user_id else ""

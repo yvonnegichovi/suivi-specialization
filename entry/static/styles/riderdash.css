@@ -13,7 +13,7 @@
     --heading-font: 'Source Serif Pro', serif;
     --normal-font-size: 1rem;
     --z-fixed: 100;
-    --sidebar-transition-speed: 0.4s; /* Consistent speed */
+    --sidebar-transition-speed: 0.4s; 
 }
 
 *,
@@ -24,12 +24,12 @@
 
 body {
     position: relative;
-    margin-top: var(--header-height); /* Only top margin for fixed header */
-    padding: 0; /* Remove body padding, apply to .assyn if needed */
+    margin-top: var(--header-height); 
+    padding: 0; 
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
     background-color: var(--white-color);
-    /* Remove margin transition from body */
+    
 }
 
 a {
@@ -44,14 +44,14 @@ a {
     left: 0;
     display: flex;
     align-items: center;
-    padding: 0 1rem; /* Base padding */
+    padding: 0 1rem; 
     background-color: #ffffff;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     z-index: calc(var(--z-fixed) + 1);
     transition: padding-left var(--sidebar-transition-speed) ease-in-out;
 }
 
-/* Adjust header padding based on sidebar state (matching .assyn margin) */
+
 .header.expanded {
     padding-left: calc(var(--nav-width-expanded) + 1rem);
 }
@@ -95,7 +95,7 @@ a {
     position: fixed;
     top: 0;
     left: 0;
-    /* Width is controlled by JS adding/removing .collapsed */
+    
     height: 100vh;
     background-color: var(--first-color);
     padding: .5rem 0.5rem 0 0;
@@ -135,7 +135,7 @@ a {
     color: var(--white-color);
     font-weight: 700;
     opacity: 0;
-    transition: opacity 0.3s ease-in-out 0.1s; /* Adjust delay */
+    transition: opacity 0.3s ease-in-out 0.1s; 
     white-space: nowrap;
 }
 
@@ -145,7 +145,7 @@ a {
     transition: color .3s, background-color .3s;
     border-radius: 5px;
     margin-right: 0.5rem;
-    cursor: pointer; /* Make all links look clickable */
+    cursor: pointer; 
 }
 
 .nav_link:hover {
@@ -159,11 +159,11 @@ a {
 
 .nav_name {
     opacity: 0;
-    transition: opacity 0.3s ease-in-out 0.1s; /* Adjust delay */
+    transition: opacity 0.3s ease-in-out 0.1s; 
     white-space: nowrap;
 }
 
-/* Sidebar Expanded State */
+
 .l-navbar:not(.collapsed) {
     width: var(--nav-width-expanded);
 }
@@ -172,7 +172,7 @@ a {
     opacity: 1;
 }
 
-/* Sidebar Collapsed State */
+
 .l-navbar.collapsed {
     width: var(--nav-width-collapsed);
 }
@@ -197,15 +197,15 @@ a {
     border-radius: 5px 0 0 5px;
 }
 
-/* --- Main Content Area (.assyn) --- */
+
 .assyn {
-    padding: 1rem; /* Add padding inside the content area */
+    padding: 1rem; 
     transition: margin-left var(--sidebar-transition-speed) ease-in-out;
-    /* Margin is controlled by classes below */
-    min-height: calc(100vh - var(--header-height)); /* Ensure it takes height */
+    
+    min-height: calc(100vh - var(--header-height)); 
 }
 
-/* Apply margin to .assyn based on sidebar state */
+
 .assyn.expanded {
     margin-left: var(--nav-width-expanded);
 }
@@ -215,7 +215,7 @@ a {
 }
 
 
-/* --- Rest of your specific styles --- */
+
 
 .assignment-item.card {
     border: 1px solid #e0e0e0;

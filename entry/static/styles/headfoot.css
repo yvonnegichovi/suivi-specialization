@@ -36,7 +36,7 @@ footer a {
 
 
 body {
-    background-color: #000000 !important; /* Black background */
+    background-color: #000000 !important; 
 }
 footer i {
     font-size: 1.8rem;
@@ -146,7 +146,7 @@ nav ul li a:before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #000; /* Overlay color */
+    background-color: #000; 
     z-index: -1;
     transform: scaleX(0);
     transform-origin: left;
@@ -164,8 +164,8 @@ nav ul li a:hover {
   color: white;
 }
 .btn-outline-primary {
-  color: #007bff; /* Blue color */
-  border-color: #007bff; /* Blue color */
+  color: #007bff; 
+  border-color: #007bff; 
   background-color: transparent;
 }
 
@@ -180,20 +180,20 @@ nav ul li a:hover {
 
 .navbar-nav {
     display: flex;
-    justify-content: space-around; /* Distributes items evenly */
+    justify-content: space-around; 
     align-items: center;
     width: 100%;
 }
 
 .nav-item {
-    margin: 10px 10px; /* Adds margin between items */
+    margin: 10px 10px; 
 }
 
 .nav-link {
     color: white;
     text-align: center;
-    padding: 10px 15px; /* Adjust padding for smaller size */
-    font-size: 14px; /* Adjust font size */
+    padding: 10px 15px; 
+    font-size: 14px; 
     text-decoration: none;
     border-radius: 5px;
 }
@@ -212,7 +212,7 @@ nav ul li a:hover {
 .nav-link:active {
     background-color: #666;
     color: white;
-    outline: none; /* Remove outline on focus */
+    outline: none; 
 }
 
 @media screen and (max-width: 600px) {
@@ -221,7 +221,7 @@ nav ul li a:hover {
         display: block;
         width: 100%;
         text-align: left;
-       /*	padding: 14px;*/
+       
     }
 
     .navbar a.active {
@@ -231,22 +231,22 @@ nav ul li a:hover {
 }
 @media screen and (min-width: 601px) {
     .navbar a {
-        padding: 14px 30px; /* Increase padding for larger screens */
+        padding: 14px 30px; 
     }
 }
-/* headfoot.css or any custom CSS file */
+
 .navbar-collapse {
-    justify-content: flex-end; /* Align menu items to the right */
+    justify-content: flex-end; 
 }
 
 @media (max-width: 768px) {
     .navbar-collapse {
-        width: 250px; /* Set a fixed width for the sidebar menu */
-        background-color: rgba(0, 0, 0, 0.9); /* Optional: Dark background */
+        width: 250px; 
+        background-color: rgba(0, 0, 0, 0.9); 
     }
 
     .navbar-collapse.collapse.show {
-        display: block; /* Ensure the menu is shown as a block element */
+        display: block; 
     }
 
     .navbar-nav {
@@ -254,56 +254,56 @@ nav ul li a:hover {
     }
 
     .navbar-nav .nav-item {
-        text-align: left; /* Align text to the left */
+        text-align: left; 
     }
 }
 
 
 
-/* Top Image */
+
 .top-image {
-    width: 95%; /* Occupy 95% of the width */
-    margin: 0 auto 30px auto; /* Center the image and add margin below */
-    border-radius: 10px; /* Adjust the border-radius for consistency */
+    width: 95%; 
+    margin: 0 auto 30px auto; 
+    border-radius: 10px; 
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Side-by-side Sections */
+
 .side-by-side-section {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 0; /* Remove bottom margin to attach sections */
+    margin-bottom: 0; 
 }
 
 .side-by-side-section > .col-md-6 {
-    padding: 0; /* Remove padding to eliminate gaps between sections */
+    padding: 0; 
 }
 
 .why-choose-suivi, .become-rider {
-    width: 100%; /* Ensure each section occupies full width of its column */
-    border-radius: 0; /* Remove border radius to align sections perfectly */
-    box-shadow: none; /* Remove shadow if you want a flush attachment */
+    width: 100%; 
+    border-radius: 0; 
+    box-shadow: none; 
 }
 
-/* Adjust padding for inner content */
+
 .why-choose-suivi .list-group-item,
 .become-rider .list-group-item {
     padding: 15px;
 }
 
 .why-choose-suivi, .become-rider {
-    margin-bottom: 0; /* Remove bottom margin */
-    border-radius: 10px; /* Adjust the border-radius */
+    margin-bottom: 0; 
+    border-radius: 10px; 
 }
 
 .side-by-side-section img {
     width: 100%;
     height: auto;
     object-fit: cover;
-    border-radius: 10px; /* Consistent border-radius for images */
+    border-radius: 10px; 
 }
 
-/* Responsive navigation menu (for mobile devices) */
+
 @media screen and (max-width: 600px) {
     .navbar a {
         float: none;
@@ -318,7 +318,7 @@ nav ul li a:hover {
     }
 
     .top-image {
-        width: 100%; /* On mobile, let the image occupy full width */
+        width: 100%; 
     }
 
     .side-by-side-section {
@@ -326,7 +326,7 @@ nav ul li a:hover {
     }
 
     .why-choose-suivi, .become-rider {
-        margin-bottom: 20px; /* Add space between stacked sections on mobile */
+        margin-bottom: 20px; 
     }
 }
 
@@ -338,19 +338,17 @@ nav ul li a:hover {
 
 @media screen and (min-width: 601px) {
     .navbar a {
-        padding: 14px 30px; /* Increase padding for larger screens */
+        padding: 14px 30px; 
     }
 }
-/*-- -------------------------- -->
-<---           Footer           -->
-<--- -------------------------- -*/
 
-/* Mobile - 360px */
+
+
 @media only screen and (min-width: 0rem) {
     #cs-footer-108 {
-        /* 40px - 100px top and bottom */
+        
         padding: clamp(1rem, 4vw, 3rem) 0.5rem;
-        /* 40px - 50px */
+        
         padding-bottom: clamp(2.5rem, 7.9vw, 3.125rem);
     }
     #cs-footer-108 .cs-container {
@@ -359,7 +357,7 @@ nav ul li a:hover {
         margin: auto;
     }
     #cs-footer-108 .cs-ul {
-        /* 40px - 60px*/
+        
         padding: 0 0 clamp(1rem, 2.5vw, 1.5rem);
         margin: auto;
         border-bottom: 1px solid #eff0f6;
@@ -373,7 +371,7 @@ nav ul li a:hover {
         margin-bottom: 0;
     }
     #cs-footer-108 .cs-link {
-        /* 16px - 20px */
+        
         font-size: clamp(1rem, 1.55vw, 1.25rem);
         line-height: 1.5em;
         text-decoration: none;
@@ -385,7 +383,7 @@ nav ul li a:hover {
         width: 100%;
     }
     #cs-footer-108 .cs-link:before {
-        /* top right box */
+        
         content: "";
         width: 0%;
         height: 0.1875rem;
@@ -398,16 +396,16 @@ nav ul li a:hover {
         transition: width 0.3s;
     }
     #cs-footer-108 .cs-copyright {
-        /* 14px - 16px */
+        
         font-size: clamp(0.875rem, 1.6vw, 1rem);
         text-align: center;
         color: #a0a3bd;
         display: block;
-        /* 20px - 28px */
+        
         margin: clamp(1rem, 1.2vw, 1rem) auto 0;
     }
 }
-/* Tablet - 600px */
+
 @media only screen and (min-width: 37.5rem) {
     #cs-footer-108 .cs-ul {
         display: flex;
@@ -415,14 +413,14 @@ nav ul li a:hover {
         align-items: center;
     }
     #cs-footer-108 .cs-li {
-        /* 44px - 88px */
+        
         margin: 0 clamp(2.75rem, 6.2vw, 5.5rem) 0 0;
     }
     #cs-footer-108 .cs-li:last-of-type {
         margin: 0;
     }
 }
-/* Dark Mode */
+
 @media only screen and (min-width: 0rem) {
     body.dark-mode #cs-footer-108 {
         background-color: rgba(0, 0, 0, 0.2);
@@ -436,7 +434,7 @@ nav ul li a:hover {
 }
 
                                 :root {
-    /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
+    
     --primary: blue;
     --primaryLight: #ffba43;
     --secondary: #ffba43;
@@ -444,12 +442,12 @@ nav ul li a:hover {
     --headerColor: #1a1a1a;
     --bodyTextColor: #4e4b66;
     --bodyTextColorWhite: #fafbfc;
-    /* 13px - 16px */
+    
     --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
-    /* 31px - 49px */
+    
     --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
     --bodyFontSize: 1rem;
-    /* 60px - 100px top and bottom */
+    
     --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
 }
 
@@ -459,7 +457,7 @@ body {
 }
 
 *, *:before, *:after {
-    /* prevents padding from affecting height and width */
+    
     box-sizing: border-box;
 }
 .cs-topper {
@@ -494,20 +492,20 @@ body {
     margin: 0;
     color: var(--bodyTextColor);
 }
-                        /* For mobile and desktop navigation */
+                        
 #cs-navigation {
     width: 100%;
     padding: 0 1rem;
     box-sizing: border-box;
     background-color: #fff;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    position: fixed; /* Ensure it sticks to the top */
-    top: 0; /* Stick to the top of the viewport */
-    left: 0; /* Align to the left */
-    z-index: 10000; /* Ensure it's above other content */
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    z-index: 10000; 
 }
 
-/* Additional styles to make sure the navigation is styled correctly for various states */
+
 #cs-navigation.cs-active .cs-ul-wrapper {
     opacity: 1;
     transform: scaleY(1);
@@ -524,34 +522,34 @@ body {
 }
 
 #cs-navigation .cs-toggle {
-    display: none; /* Hide toggle button on desktop */
+    display: none; 
 }
 
-/* Responsive adjustments for mobile */
+
 @media only screen and (max-width: 63.9375rem) {
     #cs-navigation {
-        /* Mobile styles */
+        
     }
 }
-/* Header */
+
 #cs-navigation {
     width: 100%;
     padding: 0 1rem;
-    background-color: #000; /* Black background */
+    background-color: #000; 
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    position: fixed; /* Stick to the top */
+    position: fixed; 
     top: 0;
     left: 0;
-    z-index: 10000; /* Ensure it’s above other content */
+    z-index: 10000; 
 }
 
 .cs-container {
     max-width: 80rem;
     margin: auto;
     display: flex;
-    justify-content: space-between; /* Space between logo and navigation */
+    justify-content: space-between; 
     align-items: center;
-    padding: 1rem 0; /* Vertical padding */
+    padding: 1rem 0; 
 }
 
 .cs-logo img {
@@ -565,7 +563,7 @@ body {
 }
 
 .cs-toggle {
-    display: none; /* Hide toggle button on desktop */
+    display: none; 
 }
 
 .cs-ul-wrapper {
@@ -585,20 +583,20 @@ body {
 
 .cs-li-link {
     text-decoration: none;
-    color: #fff; /* White text color */
+    color: #fff; 
     padding: 5px 10px;
-    border: black; /* White border for contrast */
+    border: black; 
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
 }
 
 .cs-li-link:hover,
-.cs-li-link.cs-active { /* Dark background on hover */
-    color: #fff; /* White text on hover */
+.cs-li-link.cs-active { 
+    color: #fff; 
 }
 
 .cs-button-solid {
-    background-color: blue; /* Color for contact button */
+    background-color: blue; 
     color: #fff;
     padding: 10px 15px;
     border: none;
@@ -609,27 +607,27 @@ body {
 }
 
 .cs-button-solid:hover {
-    /* background-color: #003366;  Darker shade on hover */
+    
 }
 
-/* Responsive adjustments */
+
 @media only screen and (max-width: 63.9375rem) {
     .cs-toggle {
-        display: block; /* Show toggle button on mobile */
+        display: block; 
     }
 
     .cs-ul-wrapper {
-        display: none; /* Hide menu on mobile by default */
+        display: none; 
         position: absolute;
         top: 100%;
         left: 0;
         right: 0;
-        background-color: #000; /* Black background for mobile menu */
+        background-color: #000; 
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     }
 
     .cs-ul-wrapper.show {
-        display: flex; /* Show menu when toggled */
+        display: flex; 
         flex-direction: column;
     }
 
@@ -639,11 +637,11 @@ body {
     }
 
     .cs-button-solid {
-        display: block; /* Make button visible on mobile */
-        margin: 10px 0; /* Add margin for spacing */
+        display: block; 
+        margin: 10px 0; 
     }
 }
-/* Header Logo */
+
 .cs-logo {
     display: flex;
     align-items: center;
@@ -651,34 +649,34 @@ body {
 }
 
 .cs-logo-text {
-    font-size: 24px; /* Adjust font size as needed */
+    font-size: 24px; 
     font-weight: bold;
-    color: #fff; /* White color for contrast against a black background */
-    letter-spacing: 2px; /* Add some spacing between letters */
-    text-transform: uppercase; /* Make the text uppercase */
+    color: #fff; 
+    letter-spacing: 2px; 
+    text-transform: uppercase; 
     transition: color 0.3s;
 }
 
 .cs-logo-text:hover {
-    color: #ccc; /* Change color on hover */
+    color: #ccc; 
 }
 
-/* Adjust header styles to fit the new logo */
+
 #cs-navigation {
-    background-color: #000; /* Black background for the navigation */
-    box-shadow: none; /* Remove shadow if you prefer a flat look */
+    background-color: #000; 
+    box-shadow: none; 
 }
 
 .cs-container {
-    padding: 1rem; /* Ensure padding is uniform */
+    padding: 1rem; 
 }
 
 .cs-nav {
-    margin-left: auto; /* Push navigation to the right */
+    margin-left: auto; 
 }
 
 .cs-button-solid {
-    background-color: blue; /* Color for contact button */
+    background-color: blue; 
     color: #fff;
 }
 

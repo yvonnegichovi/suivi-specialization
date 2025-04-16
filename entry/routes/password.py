@@ -26,7 +26,6 @@ def forgot_password():
             sender.reset_password_token = token
             db.session.commit()
 
-            # Send password reset email
             reset_url = url_for('password.reset_password', token=token, _external=True)
             message = f"Click the link to reset your password: {reset_url}"
             send_email(sender.email, "Password Reset Request", message)
@@ -38,7 +37,6 @@ def forgot_password():
             rider.reset_password_token = token
             db.session.commit()
 
-            # Send password reset email
             reset_url = url_for('password.reset_password', token=token, _external=True)
             message = f"Click the link to reset your password: {reset_url}"
             send_email(rider.email, "Password Reset Request", message)
@@ -52,16 +50,13 @@ def forgot_password():
 
 @password.route('/reset_password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
-    # Check if the token exists for a user
     user = User.query.filter_by(reset_password_token=token).first()
     if user:
         form = ResetPasswordForm()
         if form.validate_on_submit():
-            # Update the user's password
             new_password = form.password.data
             user.password = bcrypt.generate_password_hash(new_password).decode('utf-8')
 
-            # Clear the reset_password_token
             user.reset_password_token = None
             db.session.commit()
 
@@ -69,7 +64,6 @@ def reset_password(token):
             return redirect(url_for('main.logout'))
         return render_template('reset_password.html', form=form)
 
-    # If the token is invalid or expired for user
     flash("Invalid or expired token.", 'danger')
     return redirect(url_for('password.forgot_password'))
 

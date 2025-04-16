@@ -2,10 +2,10 @@
     background-color: black;
     background-image: linear-gradient(120deg, #000000, #434343, #000000);
 }
-/* login.css */
 
 
-/* Form styling */
+
+
 .form-group {
     margin-bottom: 1.5rem;
 }
@@ -22,7 +22,7 @@
     border-radius: 0.3rem;
 }
 
-/* Button styling */
+
 .btn-outline-info {
     color: #17a2b8;
     border-color: #17a2b8;
@@ -34,7 +34,7 @@
     border-color: #17a2b8;
 }
 
-/* Content section styling */
+
 .content-section {
     background-color: #fff;
     padding: 2rem;
@@ -42,7 +42,7 @@
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
-/* Form legend styling */
+
 legend {
     font-size: 1.5rem;
     font-weight: bold;
@@ -52,13 +52,13 @@ legend {
     margin-bottom: 1.5rem;
 }
 
-/* Error message styling */
+
 .text-danger {
     font-size: 0.875rem;
 }
-/* login.css */
 
-/* Form styling */
+
+
 .form-group {
     margin-bottom: 1.5rem;
 }
@@ -75,7 +75,7 @@ legend {
     border-radius: 0.3rem;
 }
 
-/* Button styling */
+
 .btn-outline-info {
     color: navy;
     border-color: navy;
@@ -87,7 +87,7 @@ legend {
     border-color: navy;
 }
 
-/* Content section styling */
+
 .content-section {
     background-color: #fff;
     padding: 2rem;
@@ -95,7 +95,7 @@ legend {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
-/* Form legend styling */
+
 legend {
     font-size: 1.5rem;
     font-weight: bold;
@@ -105,7 +105,7 @@ legend {
     margin-bottom: 1.5rem;
 }
 
-/* Error message styling */
+
 .text-danger {
     font-size: 0.875rem;
 }

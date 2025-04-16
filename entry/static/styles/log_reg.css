@@ -82,19 +82,19 @@ a:hover {
     text-align: center;
 }
 #company-list {
-    list-style-type: none; /* Remove bullet points */
-    padding: 0; /* Remove default padding */
+    list-style-type: none; 
+    padding: 0; 
 }
 
-/* Style for each company item */
+
 #company-list li {
     padding: 10px;
-    border-bottom: 1px solid #ccc; /* Add border between items */
-    transition: background-color 0.3s; /* Smooth background color transition */
+    border-bottom: 1px solid #ccc; 
+    transition: background-color 0.3s; 
 }
 
-/* Change background color on hover */
+
 #company-list li:hover {
     background-color: #f0f0f0;
-    cursor: pointer; /* Change cursor to pointer on hover */
+    cursor: pointer; 
 }

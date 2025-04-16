@@ -16,12 +16,12 @@ input[type="password"] {
 button[type="submit"] {
     background-color: #4CAF50;
     color: white;
-    margin: 8px auto; /* Center the button horizontally with auto margin */
+    margin: 8px auto; 
     border: solid;
     border-radius: 9px;
     cursor: pointer;
-    width: 40%; /* Adjust the width of the button */
-    padding: 15px; /* Add padding for better visual appearance */
+    width: 40%; 
+    padding: 15px; 
 }
 
 

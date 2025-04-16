@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
     const searchContainer = document.querySelector('.faq-search-container');
-    // Read the URL from the data attribute
     const searchUrl = searchContainer ? searchContainer.dataset.searchUrl : null;
 
     const searchInput = document.getElementById('faq-search-input');
@@ -10,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const noResultsMessage = document.getElementById('no-results-message');
 
     const performSearch = () => {
-        // Ensure we have the URL before proceeding
         if (!searchUrl) {
             console.error("Search URL is missing from data attribute.");
             resultsList.innerHTML = '<p class="text-danger">Configuration error: Cannot perform search.</p>';
@@ -32,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function() {
         resultsContainer.style.display = 'block';
         noResultsMessage.style.display = 'none';
 
-        // Use the searchUrl variable read from the data attribute
         fetch(`${searchUrl}?search_query=${encodeURIComponent(searchTerm)}`)
             .then(response => {
                 if (!response.ok) {
@@ -90,10 +87,8 @@ document.addEventListener("DOMContentLoaded", function() {
             });
     };
 
-    // Add event listeners only if elements exist
     if (searchButton && searchInput) {
         searchButton.addEventListener('click', performSearch);
-        // Optional: Allow searching on pressing Enter in the input field
         searchInput.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 performSearch();

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/payment.css') }}">
 </head>
 <body>
-    <!-- Header -->
+    
     <header>
         <div class="container">
             <h1>Parcel Payment</h1>
@@ -21,7 +21,7 @@
         </div>
     </header>
 
-    <!-- Main Content -->
+    
     <div class="row justify-content-center">
 	    {% with messages = get_flashed_messages(with_categories=true) %}
 	    {% if messages %}
@@ -55,7 +55,7 @@
 
 
         <div class="container">
-            <!-- Payment Options Section -->
+            
             <section id="payment-options">
                 <h2>Payment Options</h2>
                 <div class="payment-card">
@@ -81,39 +81,39 @@
                 </div>
             </section>
 
-            <!-- Parcel Summary Section -->
+            
             <section id="parcel-summary">
                 <h2>Parcel Summary</h2>
                 <div class="parcel-details">
-                    <!-- Display parcel details such as amount payable -->
+                    
                     <p>Amount Payable: ${{ result.distance }}</p>
-                    <!-- Add more details as needed -->
+                    
                 </div>
                 <form id="payment-submit">
 			<button href="{{ url_for('payment.payment_success') }}" >Submit Payment</button>
                 </form>
             </section>
 
-            <!-- Receipt Section -->
+            
             <section id="receipt">
                 <h2>Payment Receipt</h2>
                 <div class="receipt-details">
-                    <!-- Display dynamically produced receipt -->
+                    
                     <p>{{ result.message }}</p>
-                    <!-- Add more receipt details as needed -->
+                    
                 </div>
             </section>
         </div>
     </main>
 
-    <!-- Footer -->
+    
     <footer>
         <div class="container">
             <p>&copy; 2024 Parcel Delivery. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    
     <script src="https://js.stripe.com/v3/"></script>
     <script src="{{ url_for('static', filename='scripts/payment.js') }}"></script>
 </body>
