@@ -6,126 +6,166 @@
     <title>Parcel Dispatching History</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/view_parcel_history.css') }}">
-  <link rel="icon" href="../static/images/favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" sizes="180x180" href="../static/images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../static/images/favicon-32x32.png">
+    <link rel="icon" href="../static/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/images/favicon-32x32.png">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/headfoot.css') }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon-16x16.png">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-P8XN+Jyrp6rVIiIMT9RYBq5h6DScnIxK1K8yhSfFNSq7hdx38P4qNGpbKNisF3d6V2fK60h0RVaMx6syPeCifQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- Bootstrap CSS -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <!-- jQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/ionicons@6.0.2/dist/css/ionicons.min.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon-16x16.png">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-P8XN+Jyrp6rVIiIMT9RYBq5h6DScnIxK1K8yhSfFNSq7hdx38P4qNGpbKNisF3d6V2fK60h0RVaMx6syPeCifQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/ionicons@6.0.2/dist/css/ionicons.min.css">
 </head>
 <body>
-	{% include 'header.html' %}
-{% if current_user.is_authenticated %}
-<div class="container">
-    <h1>Your Parcel Dispatching History</h1>
-    
-    <h5>Allocated Parcels</h5>
-    {% if allocated_parcels %}
-        {% for parcel in allocated_parcels %}
-            <div class="tracking-item">
-                <div class="tracking-icon status-allocated">
-                    <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
-                        <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
-                    </svg>
-                </div>
-                <div class="tracking-date">{{ parcel.date }}<span>{{ parcel.time }}</span></div>
-                <div class="tracking-content">
-                    <p><strong>Tracking Number:</strong> {{ parcel.tracking_number }}</p>
-                    <p><strong>Receiver Name:</strong> {{ parcel.receiver_name }}</p>
-                    <p><strong>Receiver Contact:</strong> {{ parcel.receiver_contact }}</p>
-                    <p><strong>Pickup Location:</strong> {{ parcel.pickup_location }}</p>
-                    <p><strong>Delivery Location:</strong> {{ parcel.delivery_location }}</p>
-		</div>
-            </div>
-        {% endfor %}
-    {% else %}
-        <p>No allocated parcels found.</p>
-    {% endif %}
+    {% include 'header.html' %}
+    {% if current_user.is_authenticated %}
+    <div class="assignment-container">
+        <h1>Your Parcel Dispatching History</h1>
 
-    <h5>In Progress Parcels</h5>
-    {% if in_progress_parcels %}
-        {% for parcel in in_progress_parcels %}
-            <div class="tracking-item">
-                <div class="tracking-icon status-inprogress">
-                    <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
-                        <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
-                    </svg>
-                </div>
-                <div class="tracking-date">{{ parcel.date }}<span>{{ parcel.time }}</span></div>
-                <div class="tracking-content">
-                    <p><strong>Tracking Number:</strong> {{ parcel.tracking_number }}</p>
-                    <p><strong>Receiver Name:</strong> {{ parcel.receiver_name }}</p>
-                    <p><strong>Receiver Contact:</strong> {{ parcel.receiver_contact }}</p>
-                    <p><strong>Pickup Location:</strong> {{ parcel.pickup_location }}</p>
-                    <p><strong>Delivery Location:</strong> {{ parcel.delivery_location }}</p>
-		</div>
-            </div>
-        {% endfor %}
-    {% else %}
-        <p>No parcels in progress.</p>
-    {% endif %}
+        <div class="filter-container">
+            <button class="btn btn-outline-secondary filter-btn" data-status="all">All</button>
+            <button class="btn btn-outline-warning filter-btn" data-status="allocated">Allocated</button>
+            <button class="btn btn-outline-info filter-btn" data-status="inprogress">In Progress</button>
+            <button class="btn btn-outline-primary filter-btn" data-status="shipped">Shipped</button>
+            <button class="btn btn-outline-success filter-btn" data-status="arrived">Arrived</button>
+        </div>
 
-    <h5>Shipped Parcels</h5>
-    {% if shipped_parcels %}
-        {% for parcel in shipped_parcels %}
-            <div class="tracking-item">
-                <div class="tracking-icon status-shipped">
-                    <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
-                        <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
-                    </svg>
-                </div>
-                <div class="tracking-date">{{ parcel.date }}<span>{{ parcel.time }}</span></div>
-                <div class="tracking-content">
-                    <p><strong>Tracking Number:</strong> {{ parcel.tracking_number }}</p>
-                    <p><strong>Receiver Name:</strong> {{ parcel.receiver_name }}</p>
-                    <p><strong>Receiver Contact:</strong> {{ parcel.receiver_contact }}</p>
-                    <p><strong>Pickup Location:</strong> {{ parcel.pickup_location }}</p>
-                    <p><strong>Delivery Location:</strong> {{ parcel.delivery_location }}</p>
-		</div>
-            </div>
-        {% endfor %}
-    {% else %}
-        <p>No shipped parcels found.</p>
-    {% endif %}
+        <div id="allocated-parcels">
+            <h5>Allocated Parcels</h5>
+            {% if allocated_parcels %}
+                {% for parcel in allocated_parcels %}
+                    <div class="tracking-item status-allocated">
+                        <div class="tracking-icon">
+                            <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                            </svg>
+                        </div>
+                        <div class="tracking-date">{{ parcel.date }}<span>{{ parcel.time }}</span></div>
+                        <div class="tracking-content">
+                            <p><strong>Receiver Name:</strong> {{ parcel.receiver_name }}</p>
+                            <p><strong>Receiver Contact:</strong> {{ parcel.receiver_contact }}</p>
+                            <p><strong>Pickup Location:</strong> {{ parcel.pickup_location }}</p>
+                            <p><strong>Delivery Location:</strong> {{ parcel.delivery_location }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="no-assignments">No allocated parcels found.</p>
+            {% endif %}
+        </div>
 
-    <h5>Arrived Parcels</h5>
-    {% if arrived_parcels %}
-        {% for parcel in arrived_parcels %}
-            <div class="tracking-item">
-                <div class="tracking-icon status-arrived">
-                    <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
-                        <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
-                    </svg>
-                </div>
-                <div class="tracking-date">{{ parcel.date }}<span>{{ parcel.time }}</span></div>
-                <div class="tracking-content">
-                    <p><strong>Tracking Number:</strong> {{ parcel.tracking_number }}</p>
-                    <p><strong>Receiver Name:</strong> {{ parcel.receiver_name }}</p>
-                    <p><strong>Receiver Contact:</strong> {{ parcel.receiver_contact }}</p>
-                    <p><strong>Pickup Location:</strong> {{ parcel.pickup_location }}</p>
-                    <p><strong>Delivery Location:</strong> {{ parcel.delivery_location }}</p>
-		</div>
-            </div>
-        {% endfor %}
-    {% else %}
-        <p>No arrived parcels found.</p>
-    {% endif %}
+        <div id="inprogress-parcels">
+            <h5>In Progress Parcels</h5>
+            {% if in_progress_parcels %}
+                {% for parcel in in_progress_parcels %}
+                    <div class="tracking-item status-inprogress">
+                        <div class="tracking-icon">
+                            <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                            </svg>
+                        </div>
+                        <div class="tracking-date">{{ parcel.date }}<span>{{ parcel.time }}</span></div>
+                        <div class="tracking-content">
+                            <p><strong>Receiver Name:</strong> {{ parcel.receiver_name }}</p>
+                            <p><strong>Receiver Contact:</strong> {{ parcel.receiver_contact }}</p>
+                            <p><strong>Pickup Location:</strong> {{ parcel.pickup_location }}</p>
+                            <p><strong>Delivery Location:</strong> {{ parcel.delivery_location }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="no-assignments">No parcels in progress.</p>
+            {% endif %}
+        </div>
 
-</div>
-{% else %}
-<div class="container">
-    <h1>Parcel Allocation History</h1>
-    <p>Please log in to view your parcel history.</p>
-</div>
-{% endif %}
-{% include 'footer.html' %}
+        <div id="shipped-parcels">
+            <h5>Shipped Parcels</h5>
+            {% if shipped_parcels %}
+                {% for parcel in shipped_parcels %}
+                    <div class="tracking-item status-shipped">
+                        <div class="tracking-icon">
+                            <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                            </svg>
+                        </div>
+                        <div class="tracking-date">{{ parcel.date }}<span>{{ parcel.time }}</span></div>
+                        <div class="tracking-content">
+                            <p><strong>Receiver Name:</strong> {{ parcel.receiver_name }}</p>
+                            <p><strong>Receiver Contact:</strong> {{ parcel.receiver_contact }}</p>
+                            <p><strong>Pickup Location:</strong> {{ parcel.pickup_location }}</p>
+                            <p><strong>Delivery Location:</strong> {{ parcel.delivery_location }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="no-assignments">No shipped parcels found.</p>
+            {% endif %}
+        </div>
+
+        <div id="arrived-parcels">
+            <h5>Arrived Parcels</h5>
+            {% if arrived_parcels %}
+                {% for parcel in arrived_parcels %}
+                    <div class="tracking-item status-arrived">
+                        <div class="tracking-icon">
+                            <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                        </div>
+                        <div class="tracking-date">{{ parcel.date }}<span>{{ parcel.time }}</span></div>
+                        <div class="tracking-content">
+                            <p><strong>Receiver Name:</strong> {{ parcel.receiver_name }}</p>
+                            <p><strong>Receiver Contact:</strong> {{ parcel.receiver_contact }}</p>
+                            <p><strong>Pickup Location:</strong> {{ parcel.pickup_location }}</p>
+                            <p><strong>Delivery Location:</strong> {{ parcel.delivery_location }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="no-assignments">No arrived parcels found.</p>
+            {% endif %}
+        </div>
+
+    </div>
+    {% else %}
+    <div class="assignment-container">
+        <h1>Parcel Allocation History</h1>
+        <p>Please log in to view your parcel history.</p>
+    </div>
+    {% endif %}
+    {% include 'footer.html' %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const trackingItems = document.querySelectorAll('.tracking-item');
+
+            trackingItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.classList.toggle('expanded');
+                });
+            });
+
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const status = this.getAttribute('data-status');
+                    filterParcels(status);
+                });
+            });
+
+            function filterParcels(status) {
+                const sections = ['allocated', 'inprogress', 'shipped', 'arrived'];
+                sections.forEach(sec => {
+                    const section = document.getElementById(`${sec}-parcels`);
+                    if (status === 'all' || status === sec) {
+                        section.style.display = '';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
+

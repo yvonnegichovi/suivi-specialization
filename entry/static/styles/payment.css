@@ -1,4 +1,4 @@
-/* Reset and General Styles */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -11,7 +11,7 @@ body {
     padding: 20px 0;
 }
 
-/* Header Styles */
+
 header {
     background-color: #007bff;
     color: #fff;
@@ -45,7 +45,7 @@ nav ul li a:hover {
     color: #cfd8dc;
 }
 
-/* Form Styles */
+
 form {
     width: 100%;
 }
@@ -79,7 +79,7 @@ button:hover {
     background-color: #388e3c;
 }
 
-/* Parcel Summary Styles */
+
 #parcel-summary {
     background-color: #f4f4f4;
     padding: 20px;
@@ -91,7 +91,7 @@ button:hover {
     font-size: 18px;
 }
 
-/* Receipt Styles */
+
 #receipt {
     margin-top: 40px;
 }
@@ -103,7 +103,7 @@ button:hover {
     border-radius: 8px;
 }
 
-/* Footer Styles */
+
 footer {
     background-color: #333;
     padding: 20px 0;
@@ -238,7 +238,7 @@ footer p {
     transform: scale(1.09);
   }
 }
-/* Card, Payment Option, and Receipt Layout */
+
 .card-container {
     display: flex;
     justify-content: space-between;
@@ -259,7 +259,7 @@ footer p {
     flex: 1;
 }
 
-/* Form Styles */
+
 .form-group {
     margin-bottom: 30px;
 }
@@ -298,7 +298,7 @@ textarea:focus {
     border-color: #007bff;
 }
 
-/* Button Styles */
+
 button {
     background-color: #007bff;
     color: #fff;

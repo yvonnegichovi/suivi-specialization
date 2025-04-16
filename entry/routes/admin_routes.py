@@ -15,20 +15,16 @@ admin_bp = Blueprint('admin_bp', __name__)
 
 class MyAdminIndexView(AdminIndexView):
     def is_accessible(self):
-        # Only allow access if the user is authenticated and is an admin
         return current_user.is_authenticated and current_user.role == 'admin'
 
     def inaccessible_callback(self, name, **kwargs):
-        # Redirect to the login page if the user doesn't have access
         return redirect(url_for('auth.login', next=request.url))
 
 
 class MyModelView(ModelView):
     def is_accessible(self):
-        # Only allow access if the user is authenticated and is an admin
         return current_user.is_authenticated and current_user.role == 'admin'
 
     def inaccessible_callback(self, name, **kwargs):
-        # Redirect to the login page if the user doesn't have access
         return redirect(url_for('auth.login', next=request.url))
 

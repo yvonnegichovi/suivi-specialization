@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join Today</title>
-    <link rel="stylesheet" href="../static/styles/register.css"> <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="../static/styles/register.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/headfoot.css') }}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body id="grad1">
 	{% include 'header.html' %}
@@ -23,7 +23,7 @@
 
     </div>
 
-    <!-- Join Today Form Section -->
+    
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -60,16 +60,16 @@
                                 {% endif %}
                             </div>
                             <div class="form-group">
-                                {{ form.user_contact.label(class="form-control-label") }}
-                                {% if form.user_contact.errors %}
-                                {{ form.user_contact(class="form-control form-control-lg is-invalid") }}
+                                {{ form.contact.label(class="form-control-label") }}
+                                {% if form.contact.errors %}
+                                {{ form.contact(class="form-control form-control-lg is-invalid") }}
                                 <div class="invalid-feedback">
-                                    {% for error in form.user_contact.errors %}
+                                    {% for error in form.contact.errors %}
                                     <span>{{ error }}</span>
                                     {% endfor %}
                                 </div>
                                 {% else %}
-                                {{ form.user_contact(class="form-control form-control-lg") }}
+                                {{ form.contact(class="form-control form-control-lg") }}
                                 {% endif %}
                             </div>
                             <div class="form-group">

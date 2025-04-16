@@ -1,75 +1,194 @@
-# SUIVI SPECIALISATION PROJECT
+# SUIVI Parcel Sending Service App
 
-Welcome to SUIVI Parcel Sending Service App. This application provides a convenient platform for users to send parcels from one location to another. It is also a platform that offers secure and consistent work to the workforce.
+**SUIVI** is an online parcel sending service platform that connects **senders (users)** with **riders** (and/or **parcel service companies**). Users can request pickups, track deliveries, and conveniently complete transactions through integrated payment gateways. Riders (or courier companies) can manage assignments through a central dashboard, update parcel statuses, and communicate with users in real-time. Below are the two available implementations of SUIVI: **Flask** and **Django**.
+
+---
+
+## Table of Contents
+
+1. [Features](#features)  
+2. [System Requirements](#system-requirements)  
+3. [Flask Version](#flask-version)  
+   - [Key Technologies](#key-technologies---flask)  
+   - [Project Structure](#project-structure---flask)  
+   - [Installation](#installation---flask)  
+   - [Database Setup](#database-setup---flask)  
+   - [Running the Application](#running-the-application---flask)  
+   - [Versioning](#versioning---flask)  
+4. [Legal and Regulatory Considerations](#legal-and-regulatory-considerations)  
+5. [License](#license)  
+6. [Contact](#contact)  
+
+---
 
 ## Features
 
-### Homepage
-The homepage serves as the first impression of the app, providing an overview of the services offered. Users can navigate to other sections of the app from here.
+1. **Homepage**  
+   - A straightforward landing page that highlights the core services and functionalities.
 
-### User Registration/Login
-Users can create accounts or log in with existing ones to access the features of the app.
+2. **User Registration & Login**  
+   - Senders (users) can register and log in to request pickups and manage their parcels.
 
-### Parcel Sending Request Form
-Users can fill out a form specifying the details of the parcel they want to send, including size, weight, pickup location, and destination.
+3. **Parcel Sending Request Form**  
+   - Users can fill out a form specifying the parcel details (size, weight, pickup/delivery locations).
 
-### Riders and Parcel Service Companies Registration/Login
-Riders and Parcel service companies can register accounts or log in to access their dashboard.
+4. **Riders & Parcel Service Companies Registration & Login**  
+   - Riders and companies can manage their profiles, accept/reject deliveries, and track parcels in transit.
 
-### Riders Dashboard
-Riders can have access to a dashboard where they can manage parcel pickup requests, accept or reject assignments, update parcel statuses, and communicate with users.
+5. **Riders Dashboard**  
+   - Tools to manage assigned pickups, track deliveries, update parcel status, and communicate with senders.
 
-### Parcel Tracking
-Users can track the status of their parcels in real-time, from pickup to delivery.
+6. **Parcel Tracking**  
+   - Real-time parcel status updates from pickup through to final delivery.
 
-### Payment Integration
-Integration with a payment gateway facilitates transactions for parcel sending services.
+7. **Payment Integration**  
+   - Seamless payment workflows using an integrated payment gateway.
 
-### Rating and Feedback System
-Users can rate and provide feedback on the parcel service companies they've used, helping other users make informed decisions.
+8. **Rating and Feedback System**  
+   - Users can rate and provide feedback on the services they received, aiding other users in decision-making.
 
-### Mobile App Version
-An Android app version of the web app will be available for users to conveniently access parcel sending services on their smartphones.
+9. **Mobile App Version**  
+   - An Android version for on-the-go access to SUIVI's core features.
 
-### Admin Panel
-An admin panel allows for the management of user accounts, company registrations, monitoring of activity, and addressing any issues that arise.
+10. **Admin Panel**  
+    - Centralized management of user accounts, company registrations, usage analytics, and issue resolution.
 
-## Running the App
+---
 
-To run the app in development mode, follow these steps:
+## System Requirements
 
-1. Ensure you have Python 3 installed on your system.
-2. Install the required dependencies by running:
+- **Python 3.7+**  
+- **PostgreSQL** (recommended)  
+- **pip** or **pipenv** for managing Python dependencies  
+- A suitable web server (for production deployment)  
+
+---
+
+## Flask Version
+
+### Key Technologies - Flask
+
+- **Flask** (Python web framework)  
+- **SQLAlchemy** (database ORM)  
+- **Flask-Migrate** (database migrations)  
+- **PostgreSQL** (production-grade database)  
+- **HTML/CSS/JavaScript** (frontend)  
+
+### Project Structure - Flask
+
+```bash
+suivi-specialization/
+├── README.md
+├── __pycache__
+├── config.py
+├── core
+│   ├── __init__.py
+│   ├── auth_routes.py
+│   ├── forms.py
+    ....
+├── entry
+│   ├── __init__.py
+│   ├── __pycache__
+│   ├── forms.py
+│   ├── models.py
+│   ├── routes
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   ...
+│   ├── sms_service.py
+│   ├── static
+│   │   ├── images
+|   |   ├── ...
+│   │   ├── main.css
+│   │   ├── profiles.css
+│   │   ├── scripts
+│   │   │   ├── dashboard.js
+│   │   │   ├── home.js
+│   │   │   ...
+│   │   ├── site.webmanifest
+│   │   └── styles
+│   │       ├── about1.css
+│   │       ...
+│   └── templates
+│       ├── about.html
+│       ....
+├── faqs.py
+├── flask_installs
+├── migrations
+│   ├── README
+│   ...
+├── package-lock.json
+├── requirements.txt
+├── run.py
+└── tailwind.config.js
+```
+
+### Installation - Flask
+
+1. **Clone the repository** (or download the ZIP):
+
+   ```bash
+   git clone https://github.com/NjengaC/suivi-specialization.git
+   cd suivi_specialization
+
+
+2. Create and activate a virtual environment (recommended):
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate     # On macOS/Linux
+    venv\Scripts\activate.bat    # On Windows
+
+    ```
+3. Install dependencies:
     ```bash
     pip install -r requirements.txt
     ```
-    or
-   ```bash
+    Alternatively
+    ```bash
     sudo ./flask_installs
     ```
-
-
+    (Ensure flask_installs is executable and correctly references your environment.)
 4. Login into postgresql and create the database
   ```bash
   sudo -u postgres psql
   ```
 ```bash
 CREATE DATABASE suivi
+\q
 ```
-5. Navigate to the project's root directory and run the following commands to instantiate database.
+(Adjust as needed if you have different user privileges.)
+
+5. Configure environment variables
+    You may need to provide your database URI in an environment variable (e.g., DATABASE_URL):
+
+    ```bash
+    export DATABASE_URL="postgresql://postgres:password@localhost/suivi"
+    ```
+6. Navigate to the project's root directory and run the following commands to instantiate database.
+
    ```bash
    export FLASK_APP=run.py
    flask db init
    flask db migrate -m "Initial migration."
    flask db upgrade
    ```
-   
-6. Run the following command while at the root of the project directory:
-   
-    ```bash
-    python3 run.py
-    ```
-7. Access the app in your web browser at http://127.0.0.1:5003
+
+## Running the Application - Flask
+1. Start the Flask development server:
+
+```bash
+python3 run.py
+```
+2. Access the application in your browser:
+
+```bash
+http://127.0.0.1:5003
+```
+(Or whichever port is configured in your run.py.)
+
+## Versioning - Flask
+Current Version: 0.1 - Flask Framework
+Future updates will increment version numbers accordingly.
 
 ## Legal and Regulatory Considerations
 

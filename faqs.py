@@ -6,23 +6,23 @@ from entry.models import FAQ
 faq_data = [
     {
         'question': 'What is your return policy?',
-        'answer': 'Our return policy allows for returns up to 30 days after purchase. Items must be in new, unused condition and in their original packaging.'
+        'answer': 'Our return policy allows for returns up to 7 days after pickup. Items will be in new their original packaging.'
     },
     {
         'question': 'How can I track my order?',
-        'answer': 'Once your order has been shipped, you will receive a tracking number via email. You can use this tracking number to monitor the status of your shipment.'
+        'answer': 'Once your order has been picked up, you will receive a tracking number via email. You can use this tracking number to monitor the status of your parcel.'
     },
     {
         'question': 'Do you offer international shipping?',
-        'answer': 'Yes, we offer international shipping to most countries. Shipping costs and delivery times may vary depending on the destination.'
+        'answer': 'Not at the moment but that will be done in the future'
     },
     {
         'question': 'What payment methods do you accept?',
-        'answer': 'We accept Visa, Mastercard, American Express, and PayPal.'
+        'answer': 'We accept Visa, Mastercard, American Express, and PayPal cards. Mpesa will soon be accepted'
     },
     {
         'question': 'How can I contact customer support?',
-        'answer': 'You can contact our customer support team via email at support@example.com or by phone at 1-800-123-4567.'
+        'answer': 'You can contact our customer support team via email at suiviadmn@gmail.com or by phone at +254792174155'
     },
     {
         'question': 'How do I schedule a parcel pickup?',
@@ -30,15 +30,15 @@ faq_data = [
     },
     {
         'question': 'What are your pickup and delivery hours?',
-        'answer': 'Our pickup and delivery hours are from 9:00 AM to 6:00 PM, Monday through Friday.'
+        'answer': 'Our pickup and delivery hours are from 9:00 AM to 6:00 PM, Monday through Sunday'
     },
     {
         'question': 'Do you provide packaging materials?',
         'answer': 'Yes, we offer packaging materials such as boxes, tape, and bubble wrap for purchase.'
     },
     {
-        'question': 'Can I request a specific delivery time?',
-        'answer': 'While we cannot guarantee specific delivery times, you can provide delivery instructions during checkout, and we will do our best to accommodate your request.'
+        'question': 'Can I request a specific pickup or delivery time?',
+        'answer': 'While we cannot guarantee specific times, you can provide instructions during checkout, and we will do our best to accommodate your request.'
     },
     {
         'question': 'How can I change my delivery address?',

@@ -1,8 +1,8 @@
 #grad1 {
     background-color: black;
-   /* background-image: linear-gradient(120deg, #000000, #434343, #000000); */
+   
 }
-/*Form styles*/
+
 #msform {
     text-align: center;
     position: relative;
@@ -32,12 +32,12 @@
     position: relative;
 }
 
-/*Hide all except first fieldset*/
+
 #msform fieldset:not(:first-of-type) {
     display: none;
 }
 
-/*Form input styles*/
+
 #msform input[type="text"],
 #msform input[type="email"],
 #msform input[type="password"],
@@ -63,7 +63,7 @@
     border-bottom: 2px solid skyblue;
 }
 
-/*Buttons*/
+
 #msform .action-button,
 #msform .action-button-previous {
     width: 100px;
@@ -84,7 +84,7 @@
     box-shadow: 0 0 0 2px white, 0 0 0 3px skyblue;
 }
 
-/*Dropdown List Exp Date*/
+
 #msform select.list-dt {
     border: none;
     outline: 0;
@@ -103,7 +103,7 @@
     position: relative;
 }
 
-/*FieldSet headings*/
+
 .fs-title {
     font-size: 25px;
     color: #2C3E50;
@@ -111,7 +111,7 @@
     font-weight: bold;
     text-align: left;
 }
-/*ProgressBar*/
+
 #msform #progressbar {
     margin-bottom: 30px;
     overflow: hidden;
@@ -174,7 +174,7 @@
     background: navy;
 }
 
-/*Images Radio Buttons*/
+
 #msform .radio-group {
     position: relative;
     margin-bottom: 25px;
@@ -200,7 +200,7 @@
     box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1);
 }
 
-/*Fit image in bootstrap div*/
+
 .fit-image {
     width: 100%;
     object-fit: cover;

@@ -32,9 +32,9 @@
   margin-left: 50px;
 }
 #map {
-    height: 400px; /* Adjust as needed */
+    height: 400px;
     width: 100%;
-    margin-top: 20px; /* Optional, to add space between map and above content */
+    margin-top: 20px;
 }
 
 #main {
@@ -79,7 +79,7 @@
   box-shadow: 0px 0px 40px rgba(174, 0, 255, 0.438);
 }
 
-/* Default sidebar style */
+
 .l-navbar {
     width: auto;
     transition: width 0.3s ease;
@@ -92,22 +92,22 @@
     width: 80px;
 }
 
-/* Adjust the main content (map) to fit the screen when the sidebar is collapsed */
+
 .collapsed {
     width: calc(100% - 80px);
 }
 
-/* Sidebar links (text) are hidden in collapsed mode */
+
 .l-navbar.collapsed .nav_name {
     display: none;
 }
 
-/* Sidebar icons are centered in collapsed mode */
+
 .l-navbar.collapsed .nav_link {
     justify-content: center;
 }
 
-/* Sidebar logo and name adjustments */
+
 .l-navbar.collapsed .nav_logo-name {
     opacity: 0;
     transform: translateX(-100%);
@@ -120,10 +120,10 @@
     transition: opacity 0.3s, transform 0.3s ease;
 }
 
-/* Sidebar styling for smaller screens */
+
 @media (max-width: 768px) {
     .l-navbar {
-        width: 80px; /* Collapse to show only icons */
+        width: 80px; 
     }
 
     .l-navbar .nav_name {
@@ -134,7 +134,7 @@
         justify-content: center;
     }
 
-    /* Ensure map respects the collapsed sidebar */
+    
     #map, .assyn {
         width: calc(100% - 80px);
         margin-left: 80px;
@@ -142,7 +142,7 @@
 }
 @media (max-width: 480px) {
     .l-navbar {
-        width: 60px; /* Further collapse to show only smaller icons */
+        width: 60px; 
     }
 
     .l-navbar .nav_name {
@@ -153,7 +153,7 @@
         justify-content: center;
     }
 
-    /* Ensure map and assyn respect the collapsed sidebar */
+    
     #map, .assyn {
         width: calc(100% - 60px);
         margin-left: 60px;
